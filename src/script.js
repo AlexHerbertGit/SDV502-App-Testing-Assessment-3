@@ -23,3 +23,5 @@ document.getElementById("bookingForm").addEventListener("submit", function(event
             "Please fill in all fields correctly.";
     }
 });
+
+module.exports = { calculateFare };
