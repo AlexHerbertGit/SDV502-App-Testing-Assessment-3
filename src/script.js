@@ -1,7 +1,11 @@
 function calculateFare(name, destination, seats) {
     const pricePerSeat = 10;
 
-    if (!name || !destination || !seats || isNaN(seats) || seats <= 0) {
+    // Validate name and destination are strings without numbers
+    const isStringValid = (value) => typeof value === "string" && isNaN(value);
+
+    // Check if inputs are valid
+    if (!isStringValid(name) || !isStringValid(destination) || !seats || isNaN(seats) || seats <= 0 || seats > 30) {
         throw new Error("Please fill in all fields correctly.");
     }
 
