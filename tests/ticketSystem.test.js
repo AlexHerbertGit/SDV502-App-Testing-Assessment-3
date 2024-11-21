@@ -67,4 +67,40 @@ describe('Bus Ticket Booking System Tests', () => {
 
         expect(() => calculateFare(name, destination, seats)).toThrow("Please fill in all fields correctly.");
     });
+
+    //Test 7 - Error handling when numbers are entered where strings are expected.
+    test('Error handling when a number is entered as a name input', () => {
+        const name = 1234;
+        const destination = 'Nelson';
+        const seats = 1;
+
+        expect(() => calculateFare(name, destination, seats)).toThrow("Please fill in all fields correctly."); 
+    });
+
+    //Test 8 - Error handling when a number is entered into the destination input field
+    test("Error handling when a number is entered as a destination input", () => {
+        const name = 'Frank';
+        const destination = 4567;
+        const seats = 3;
+
+        expect(() => calculateFare(name, destination, seats)).toThrow("Please fill in all fields correctly.");
+    });
+
+    //Test 9 - Error handling when a string is entered into seats input field that should require numbers
+    test("Error handling when a string is entered into seats input field", () => {
+        const name = 'Alan';
+        const destination = 'Nelson';
+        const seats = "two";
+
+        expect(() => calculateFare(name, destination, seats)).toThrow("Please fill in all fields correctly.");
+    });
+
+    //Test 10 - Error handling with a large number of seats submitted
+    test("Error handling with a large number of seats submitted", () => {
+        const name = 'Tyler';
+        const destination = 'Stoke';
+        const seats = 10000;
+
+        expect(() => calculateFare(name, destination, seats)).toThrow("Please fill in all fields correctly.");
+    });
 });
